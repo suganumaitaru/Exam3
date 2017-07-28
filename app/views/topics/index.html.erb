@@ -5,6 +5,8 @@
         <h1>トピック一覧</h1>
 
         <% @topics.each do |topic| %>
+            <%= profile_img(topic.user) %>
+            <%= topic.user.name %>
             <p>タイトル:<%= topic.title %></p>
             <p>本文:<%= topic.content %></p>
             <%= link_to "トピックを編集する", edit_topic_path(topic.id) %>
@@ -13,6 +15,6 @@
         <% end %>
         <br>
         <%= link_to "トピックを作成する", new_topic_path %>
-        
+
     </div>
 </div>
