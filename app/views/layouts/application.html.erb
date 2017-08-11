@@ -21,6 +21,8 @@
         <% if user_signed_in? %>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
         <li><%= link_to 'マイページ', edit_user_registration_path %></li>
+        <li><%= link_to 'ユーザー一覧', users_path %></li>
+
         <% else %>
         <li><%= link_to 'ログイン', new_user_session_path  %></li>
         <li><%= link_to 'サインアップ', new_user_registration_path %></li>
@@ -33,7 +35,4 @@
     <footer>
         <p>運営会社DIVE INTO CODE株式会社</p>
         <p>© 2015-2016 Copyright DIVE INTO CODE Corp.</p>
-    </footer>
-
-    </body>
-</html>
+    </footer> <li><%= link_to 'ユーザー一覧', users_path if user_signed_in? %></li>

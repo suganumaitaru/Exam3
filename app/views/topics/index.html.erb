@@ -3,18 +3,24 @@
 
         <%= notice %>
         <h1>トピック一覧</h1>
+        <%= link_to "トピックを作成する", new_topic_path, class: 'btn btn-default' %>
 
         <% @topics.each do |topic| %>
-            <%= profile_img(topic.user) %>
-            <%= topic.user.name %>
-            <p>タイトル:<%= topic.title %></p>
-            <p>本文:<%= topic.content %></p>
-            <%= link_to "トピックを編集する", edit_topic_path(topic.id) %>
-            <%= link_to "トピックを削除する", topic_path(topic.id), method: :delete, data:{confirm:'本当に削除していいですか'} %>
-            <br>
+            <div class="row">
+                <%= profile_img(topic.user) %>
+                <%= topic.user.name %>
+                <%= link_to topic_path(topic) do %>
+                    <h4><strong><%= topic.title %></strong></h4>
+                <% end %>
+
+                <p>本文:<%= topic.content %></p>
+                <%= link_to "トピックを編集する", edit_topic_path(topic.id), class: 'btn btn-default btn-sm btn-success' %>
+                <%= link_to "トピックを削除する", topic_path(topic.id), method: :delete, data:{confirm:'本当に削除していいですか'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+                <br>
+            </div>
         <% end %>
         <br>
-        <%= link_to "トピックを作成する", new_topic_path %>
+
 
     </div>
 </div>
