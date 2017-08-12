@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   get 'relationships/create'
 
   get 'relationships/destroy'
@@ -13,6 +12,10 @@ Rails.application.routes.draw do
     resources :topics do
         resources:comments
         post :confirm, on: :collection
+    end
+
+    resources :conversations do
+        resources :messages
     end
 
 
