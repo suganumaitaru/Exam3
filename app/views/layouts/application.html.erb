@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Achieve</title>
+            <title>Achieve</title>
+            <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
             <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
             <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
             <%= csrf_meta_tags %>
-        </head>
-    <body>
+            <% if user_signed_in? %>
+                <script>
+                    var pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>',{
+                        cluster: 'ap1',
+                        encrypted: true
+                    });
+
+                    var channel = pusher.subscribe("user_<%= current_user.id %>_channel");
+                    channel.bind('comment_created', function(data) {
+                    alert(data.message);
+                    });
+                    channel.bind('notification_created', function(data) {
+                    $('#unread_count').html(data.unread_counts);
+                    });
+                </script>
+            <% end %>
+    </head>
+
 
 <header>
     <ul>
@@ -18,11 +35,17 @@
             </ul>
         </li>
 
+
+
         <% if user_signed_in? %>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
         <li><%= link_to 'マイページ', edit_user_registration_path %></li>
         <li><%= link_to 'ユーザー一覧', users_path %></li>
         <li><%= link_to "メッセージ", conversations_path %></li>
+        <li><%= link_to notifications_index_path do %>
+  <i class="fa fa-bell fa-1x"><span id="unread_count"><%= @notifications_count %></span></i>
+<% end %></li>
+
 
         <% else %>
         <li><%= link_to 'ログイン', new_user_session_path  %></li>
