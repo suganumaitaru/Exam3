@@ -14,7 +14,7 @@
              <img src="<%= asset_path "like.jpg" %>">
              <% if user_signed_in? %>
              <ul>
-             <ol><%= link_to "TOPIC", topics_path %></ol>
+             <li><%= link_to "TOPIC", topics_path %></li>
              <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
              <li><%= link_to 'マイページ', edit_user_registration_path %></li>
              <li><%= link_to 'ユーザー一覧', users_path %></li>
