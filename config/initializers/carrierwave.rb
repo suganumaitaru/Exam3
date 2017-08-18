@@ -12,10 +12,10 @@ CarrierWave.configure do |config|
 
   case Rails.env
     when 'production'
-      config.fog_directory = exam3s-production
+      config.fog_directory = 'exam3s-production'
       config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/exam3s-production'
     when 'development'
-      config.fog_directory = exam3s-development
+      config.fog_directory = 'exam3s-development'
       config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/exam3s-development'
   end
 end
