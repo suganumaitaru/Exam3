@@ -1,7 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.action_mailer.default_url_options = { host: 'https://guarded-everglades-11598.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'http://52.192.234.109/' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings =
   {
