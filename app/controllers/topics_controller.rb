@@ -31,8 +31,10 @@ class TopicsController < ApplicationController
     end
 
     def create
+
         @topic = Topic.new(topics_params)
         @topic.user_id = current_user.id
+
         if @topic.save
             redirect_to topics_path, notice: "トピックを作成しました!"
             NoticeMailer.sendmail_topic(@topic).deliver
@@ -64,7 +66,7 @@ class TopicsController < ApplicationController
 
     private
         def topics_params
-            params.require(:topic).permit(:title, :content)
+            params.require(:topic).permit(:title, :content, :pictures, :pictures_cache)
         end
 
     def set_topic

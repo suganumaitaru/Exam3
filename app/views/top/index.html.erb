@@ -10,22 +10,31 @@
 
 
     <div class= "function">
-        <div class="function-image">
-             <img src="<%= asset_path "like.jpg" %>">
-             <% if user_signed_in? %>
-             <ul>
-             <li><%= link_to "TOPIC", topics_path %></li>
-             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-             <li><%= link_to 'マイページ', edit_user_registration_path %></li>
-             <li><%= link_to 'ユーザー一覧', users_path %></li>
-             <li><%= link_to "メッセージ", conversations_path %></li>
-             </ul>
-             <% else %>
-             <ul>
-             <li><%= link_to 'ログイン', new_user_session_path  %></li>
-             <li><%= link_to 'サインアップ', new_user_registration_path %></li>
-             </ul>
-             <% end %>
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="top-pic">
+                  <img src="<%= asset_path "meshi.jpeg"  %>">
+                </div>
+            </div>
+
+             <br>
+
+             <div class="col-md-3 col-sm-6">
+                 <% if user_signed_in? %>
+                 <ul>
+                 <li><%= link_to "TOPIC", topics_path %></li>
+                 <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+                 <li><%= link_to 'マイページ', edit_user_registration_path %></li>
+                 <li><%= link_to 'ユーザー一覧', users_path %></li>
+                 <li><%= link_to "メッセージ", conversations_path %></li>
+                 </ul>
+                 <% else %>
+                 <ul>
+                 <li><%= link_to 'ログイン', new_user_session_path  %></li>
+                 <li><%= link_to 'サインアップ', new_user_registration_path %></li>
+                 </ul>
+                 <% end %>
+            </div>
         </div>
    </div>
 
